@@ -1,36 +1,9 @@
-// Draw stuff
-// Time-stamp: <2019-01-21 20:08:33 Chuck Siska>
-// ------------------------------------------------------------
 function repeat(times, fn) {
     for(let i = 0; i < times; i++) {
         fn();
     }
 }
 
-function rule_150(temp) {
-    let result = 0;
-    while(temp.getHeadCoords().x != 0) {
-        temp.moveTape('left');
-    }
-
-    if(temp.readHead() == 1) {
-        result += 4;
-    }
-    temp.moveTape('right');
-    if(temp.readHead() == 1) {
-        result += 2;
-    }
-    temp.moveTape('right');
-    if(temp.readHead() == 1) {
-        result += 1;
-    }
-
-    while(temp.getHeadCoords().x != 0) {
-        temp.moveTape('left');
-    }
-
-    return (result == 7 || result == 4 || result == 2 || result == 1);
-}
 
 // FUN. Draw filled rect.
 function draw_rect( ctx, stroke, fill )
@@ -86,14 +59,72 @@ function fill_cell(ctx, row, col,str ) {
     }
 
 
-function lengtionAnt( ctx ) {
 
-     
-    fill_cell(ctx, 5, 5 ,'rgb(128,0,128)')
+
+function do_(){
+  if (interval_squares > 0)
+  {
+if (grid_[ant1.anx][ant1.any] == 0)
+{
+  fill_cell(context,  ant1.anx, ant1.any ,'rgb(0,0,0)') // black
+  grid_[ant1.anx][ant1.any] = 1
+}
+else if (grid_[ant1.anx][ant1.any] == 1)
+{
+  fill_cell(context,  ant1.anx, ant1.any ,'rgb(255,0,0)') // red
+  grid_[ant1.anx][ant1.any] = 10
+}
+else if (grid_[ant1.anx][ant1.any] == 10)
+{
+  fill_cell(context,  ant1.anx, ant1.any ,'rgb(255,255,0)') // yellow
+  grid_[ant1.anx][ant1.any] = 11
+}
+else{
+fill_cell(context,  ant1.anx, ant1.any ,'rgb(0,0,255)') // blue
+grid_[ant1.anx][ant1.any] = 0
 }
 
+if (ant1.antcurdir == antup)
+{ant1.any--;}
+if (ant1.antcurdir == antdown)
+{ant1.any++;}
+if (ant1.antcurdir == antright)
+{ant1.anx++;}
+if (ant1.antcurdir == antleft)
+{ant1.anx--;}
 
+if (ant1.anx > 40)
+{ ant1.anx = 0;}
+else if (ant1.anx < 0){
+  ant1.anx = 40;
+}
+if (ant1.any > 40)
+{ ant1.any = 0;}
+else if (ant1.any < 0){
+  ant1.any = 40;
+}
 
+fill_cell(context,  ant1.anx, ant1.any ,'rgb(255,255,255)')
+
+if ((grid_[ant1.anx][ant1.any] == 0) || (grid_[ant1.anx][ant1.any] == 1))
+{
+  ant1.antcurdir++;
+  if (ant1.antcurdir > antleft)
+  {
+    ant1.antcurdir = antup;
+  }
+}
+if ((grid_[ant1.anx][ant1.any] == 10) || (grid_[ant1.anx][ant1.any] == 11))
+ {
+    ant1.antcurdir--;
+    if (ant1.antcurdir < antup)
+    {
+      ant1.antcurdir = antleft;
+    }
+}
+interval_squares-=1;
+}
+}
 
 
 

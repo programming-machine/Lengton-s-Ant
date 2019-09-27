@@ -13,7 +13,7 @@
 
   </body>
   <script src="assets/turingmachine.js"></script>
-  <script src="assets/draw-stuff.js"></script>
+  <script src="assets/draw-stuffant2.js"></script>
   <script>
   // after "Introducing JavaScript Game Development" by Stuart.
 
@@ -28,10 +28,68 @@
       context.restore( );
   }
   // =====================================================  Main ====
+
+
+
+
+    var grid_ = new Array(42);
+    for (var i = 0; i < grid_.length; i++) {
+      grid_[i] = new Array(42);
+    }
+    var h = 0;
+    for (var i = 0; i < 42; i++) {
+      for (var j = 0; j < 42; j++) {
+        grid_[i][j] = 0;
+      }
+    }
+
+    function Ant(){
+      this.anx = 0;
+      this.any = 0;
+      this.id = 0000;
+      this.antcurdir = 0;
+    }
+
+    var ant1 = new Ant();
+    ant1.anx = 20;
+    ant1.any = 20;
+    ant1.id= 1110;
+    ant1.antcurdir = 0;
+
     var canvas = document.getElementById( "grid" );
     var context = canvas.getContext( "2d" );
+    var antup = 0;
+    var antdown = 2;
+    var antright = 1;
+    var antleft = 3;
+    var antx = 20;
+    var anty = 20;
+    var antid = 0000;
+    var interval_squares = 1000;
     draw_grid( context, 10, 50, 'white', 'YellowGreen');
-    lengtionAnt( context );
+    fill_cell(context,  ant1.anx, ant1.any ,'rgb(255,0,0)')
+    //context, ant1.anx, ant1.any
+
+    //lengtionAnt( ant1 );
+
+
+
+    var myVar;
+    function myTimer(){
+      {
+        do_();
+      }
+    }
+
+    {myVar = setInterval(myTimer, 1);}
+
+
+
+
+
+
+
+
 
   </script>
 </html>

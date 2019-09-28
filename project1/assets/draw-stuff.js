@@ -1,11 +1,5 @@
-function repeat(times, fn) {
-    for(let i = 0; i < times; i++) {
-        fn();
-    }
-}
 
-
-// FUN. Draw filled rect.
+// Draw filled rect.
 function draw_rect( ctx, stroke, fill )
 {
     stroke = stroke || 'lightgrey';
